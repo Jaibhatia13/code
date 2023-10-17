@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+bool binarysearch(int arr[],int size,int s,int e,int key){
+    int mid=(s+e)/2;
+    if(s>e){
+        return false;
+    }
+    if(arr[mid]==key){
+        return true;
+    }
+    if(arr[mid]<key){
+       return binarysearch(arr,size,mid+1,e,key);
+    }
+    if(arr[mid]>key){
+        return binarysearch(arr,size,s,mid-1,key);
+    }
+}
+int main (){
+    int arr[5]={1,2,3,4,5};
+    int n=5;
+    int start=0;
+    int end =n-1;
+    int key = 5;
+    bool ans=binarysearch(arr,n,start,end,key);
+    if (ans){
+        cout<<"The element is present ";
+    } else{
+        cout<<"The element is not present ";
+    }
+}
