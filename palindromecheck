@@ -1,0 +1,30 @@
+#include<iostream>
+#include<string>
+using namespace std;
+void checkpalindrome(string str){
+    int i =0;
+    int j = str.length() - 1;
+
+    while(i<=j){
+        if(str[i]==str[j]){
+        
+            i++;
+            j--;
+        }
+        else{
+           cout<<"The string is not a palindrome"<<endl;
+           return;
+        }
+        
+    }
+    cout<<"The entered string is palindrome"<<endl;
+}
+
+
+int main(){
+    string str;
+    cout<<"Enter the string "<<endl;
+    cin>>str;
+    checkpalindrome(str);
+    return 0;
+}
