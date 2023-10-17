@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cout<<"Enter the number of students"<<endl;
+    cin>>n;
+    int m=5;
+    int arr[n][m];
+    for(int i=0;i<n ; i++ ){
+        cout<<"Enter the marks for student "<<i+1<<endl;
+        for(int j=0;j<m;j++ ){
+            cin>>arr[i][j];
+        }
+    }
+       for(int i=0 ;i<n;i++){                    //total of every student
+        int sum =0;
+        for(int j=0;j < m ;j++){
+            sum +=arr[i][j];
+        }
+        cout<<"The sum of marks of student "<<i +1 <<" is "<<sum<<endl;
+        
+       }
+        for(int j=0;j<m; j++){                 // average of every subject
+         int sum=0.0;
+         for(int i=0;i<n ; i++){
+            sum += arr[i][j];
+         }
+         cout<<"The average of" <<j+1<< " subject is "<<float(sum/n)<<endl;
+        }         
+           return 0;                        
+}
