@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    Node(int d){
+        this -> data = d;
+        this -> next = NULL;
+    }
+};
+void insertAthead(Node* &head,int d){
+    Node* temp=new Node(d);
+    temp -> next = head;
+    head = temp;
+}
+void insertATend(Node* &tail,int data){
+    Node* temp = new Node(data);
+    tail -> next = temp;
+    tail = temp;
+}
+void insertionAtmiddle(Node* &tail,Node* &head,int position,int data){
+    if(position==1){
+        insertAthead(head,data);
+        return;
+    }
+
+    int count=1;
+    Node* temp=head;
+    while(count<position-1){
+       temp=temp->next;
+       count++;
+    }
+    if(temp -> next == NULL){
+        insertATend(tail,data);
+
+    }
+    Node* newnode = new Node(data);
+    newnode -> next =temp -> next;
+    temp -> next = newnode;
+
+}
+void toprint(Node* &head){
+    Node* temp2=head;
+    while(temp2!=NULL){
+        cout<< temp2->data<<" ";
+        temp2 = temp2-> next;
+    }
+    cout<<endl;
+}
+
+int main(){
+    Node* node1=new Node(10);
+
+    Node* head = node1;
+    Node* tail = node1;
+    toprint(head);
+
+    insertATend(tail,15);
+    toprint(head);
+
+    insertATend(tail,20);
+    toprint(head);
+
+     insertionAtmiddle( tail,head,1,12);
+     toprint(head);
+
+     
+
+}
