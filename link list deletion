@@ -1,0 +1,89 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public :
+    int data;
+    Node* next;
+
+    Node(int data){
+        this -> data = data ;
+         this -> next = NULL ;
+    }
+    ~Node(){}
+};
+    void insertAthead(Node* &head,int data){
+        Node* temp = new Node(data);
+        temp -> next = head;
+        head = temp;
+    }
+     void insertAttail(Node* &tail,int data){
+        Node* temp = new Node(data);
+        tail -> next = temp;
+        tail = temp;
+    }
+     void insertAtanyposition(Node*&head,Node* &tail,int data,int position){
+        if(position == 1){
+            insertAthead(head,data);
+            return;
+        }
+        
+        int count = 1;
+        Node* temp = head;
+        while(count<position-1){
+            temp = temp -> next;
+            count++;
+        }
+        if(temp -> next == NULL){
+            insertAttail(tail,data);
+        }else{
+            Node* newnode = new Node(data);
+            newnode -> next = temp -> next;
+            temp -> next = newnode;
+
+        }
+       
+        
+    }
+    void todelete(Node* &head,int position){
+        int count = 1 ;
+        Node* previous = NULL;
+        Node* current = head ;
+        while(count<position){
+            previous = current ;
+            current = current -> next;
+            count++;
+        }
+        previous -> next =current-> next;
+        current -> next = NULL;
+
+        delete current;
+    }
+    void toprint(Node* head){
+        Node* temp = head;
+        while(temp!=NULL){
+            cout<<temp -> data<<" ";
+            temp=temp->next;
+        }
+        cout<<endl;
+    }
+    int main () {
+        Node* node1=new Node(10);
+        Node* head=node1;
+        Node* tail = node1;
+        toprint(head);
+
+        insertAthead(head,15);
+         toprint(head);
+
+         insertAttail(tail,12);
+          toprint(head);
+
+      insertAtanyposition(head,tail,20,3);
+      toprint(head);
+
+      todelete(head,2);
+       toprint(head);
+
+
+
+    }
