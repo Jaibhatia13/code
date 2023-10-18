@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+class Node {
+    public :
+    int data;
+    Node* next;
+    // constructor 
+    Node(int x){
+       this -> data = x;
+       this -> next = NULL;
+    }
+
+};
+// new node created 
+void insertAthead(Node* &head,int d){
+    Node* temp=new Node(d);
+    temp -> next = head;
+    head = temp;
+}
+void value(Node *head,int size,int n){
+    int nodefromstart=size-n+1;
+    Node* temp = head;
+    for(int i=0;i<nodefromstart-1;i++){
+        temp=temp->next;
+    }
+    cout<<"The value of "<<n<<" node from end is "<<temp->data;
+
+
+}
+void toprint(Node* &head){
+    Node* temp2=head;
+    while(temp2!=NULL){
+        cout<< temp2->data<<" ";
+        temp2 = temp2-> next;
+    }
+    cout<<endl;
+}
+
+int main(){
+    //node created 
+    Node* node1= new Node(40);
+
+
+    Node* head = node1;
+    
+
+    insertAthead(head,12);
+   
+
+    insertAthead(head,13);
+    insertAthead(head,5);
+    insertAthead(head,70);
+
+    int k=2;
+
+    value(head,5,k);
+    
+
+
+
+
+
+
+    return 0;
+}
