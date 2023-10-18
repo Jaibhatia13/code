@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+/* A class to create node */
+class Node
+{
+public:
+int data;
+Node *next;
+Node *prev;
+};
+
+void insertAthead(Node** head, int newdata)
+{
+
+Node* newnode = new Node();
+
+newnode->data = newdata;
+
+newnode->prev = NULL;
+
+newnode->next = (*head);
+
+if((*head) != NULL)
+(*head)->prev = newnode ;
+
+(*head) = newnode;
+}
+void Dispplay_Doubly(Node *head)
+{
+while(head != NULL)
+{
+cout << head->data << " ";
+head = head->next;
+}
+}
+int main()
+{
+
+Node* head = NULL;
+insertAthead(&head, 9);
+insertAthead(&head, 4);
+insertAthead(&head, 8);
+
+ 
+Dispplay_Doubly(head);
+ 
+return 0;
+ 
+}
